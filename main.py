@@ -64,7 +64,7 @@ def home_page():
     # Function for entering customer data into the database
     def enter_data():
 
-        # Connect to the SQLite database
+        # Connect to the database
         conn = sqlite3.connect(file_path)
         c = conn.cursor()
 
@@ -160,8 +160,7 @@ def dw_page():
     tabs_size()
 
     def dict_factory(cursor, row):
-
-        # Create a dictionary from the cursor description and row data
+        
         return {col[0]:row[idx] for idx, col in enumerate(cursor.description)}
     
     # Connect to the database
@@ -176,7 +175,7 @@ def dw_page():
     c.close
     conn.close()
 
-    # Function to get and save visit data
+    # Function to get and sace visit data
     def wizyta():
 
         # Get input data
@@ -505,7 +504,7 @@ def lk_page():
         telefon0_item = details.get("values")[7]
         id_entry.delete(0,END)
 
-        # Insert the value of telefon0_item into id_entry
+        # Insert the value
         id_entry.insert(END, telefon0_item)
         telefon1_item = details.get("values"[1])
         telefon_entry.insert(END, telefon1_item)
@@ -513,7 +512,7 @@ def lk_page():
     telefon_entry = tk.Entry(lk_frame)
     id_entry = tk.Entry(lk_frame,width=12)
 
-    # Insert the value of telefon0_item into id_entry
+    # Insert the value
     global tree
     tree = ttk.Treeview(main_frame, column=("c0","c1", "c2", "c3","c4","c5","c6","c7"), show='headings')
 
@@ -592,10 +591,10 @@ def lk_page():
 
         con2.close()
 
-    # Bind the perform_dynamic_search function to the KeyRelease event on the search entry
+    # Bind the pds function to the KeyRelease event on the search entry
     search.bind("<KeyRelease>", perform_dynamic_search)
 
-    # Call the perform_dynamic_search function initially to display all records
+    # Call the pds function initially to display all records
     perform_dynamic_search()
 
     # Create an edit button
